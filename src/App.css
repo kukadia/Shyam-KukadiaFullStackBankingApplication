@@ -1,0 +1,40 @@
+.nav-item a:hover {
+  border-top: 4px solid #032603;
+  border-bottom: 4px solid #032603;
+  padding: 6px 0; 
+}
+
+.username {
+  padding-right: 1cm;
+  text-align: right;
+}
+
+.username a:hover {
+ 
+  color: #032603;
+  font-weight: bold;
+  padding: 3px;
+  cursor: pointer;
+}
+
+
+.parent {
+  margin: 1rem;
+  padding: 2rem 2rem;
+  text-align: left;
+}
+.child {
+  display: inline-block;
+  padding: 1rem 1rem;
+  vertical-align: middle;
+}
+
+button.dw{
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  border: none;
+  color: #f5fffa;
+  border-radius: 25px;
+  background-color: #032103;
+}
