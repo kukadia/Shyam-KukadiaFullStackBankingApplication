@@ -92,6 +92,11 @@ function Withdraw(){
     }
     
     function handleChange(e){
+      if(isNaN(e.target.value)){
+        alert(`Input Value can only be a number `);
+        e.target.value='';
+        return
+      }
       setBtnSet('true');
       check(btnset);
       setWithdraw(e.target.value); 
@@ -109,7 +114,7 @@ function Withdraw(){
                 <div className="card-body">
                  <p className="card-text">To make a withdraw from account please enter the amout below:</p>
                 <div className="form-group">
-                <label htmlFor="exampleFormControlInput1">Withdraw Amount:</label>
+                <label htmlFor="exampleFormControlInput1">Withdraw Amount:&nbsp;$</label>
                 <input  type="amount" className="form-control" id="withdraw" onChange={e => handleChange(e)}></input>
                 </div><br></br>
                 <a href="#withdraw" className={check()} style={btnSty} onClick={handlesubmit} >Withdraw</a>

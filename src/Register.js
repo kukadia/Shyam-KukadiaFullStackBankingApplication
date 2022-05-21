@@ -14,9 +14,20 @@ function Register() {
   const [user, loading, error] = useAuthState(auth);
   const history = useNavigate();
   const register = () => {
-    if (!name) alert("Please enter name");
-    registerWithEmailAndPassword(name, email, password);
+    if (!name) alert("Error: Input Name");
+    if (!email) alert("Error: Input Email");
+    if (!password) alert("Error: Input Password");
+    if(name && email && password){
+      registerWithEmailAndPassword(name, email, password);
+      alert(`Account for ${email}, created successfully!`);
+    }
+    
   };
+  // function handlePassword(e){
+  //   if(e.target.value.length<8){
+  //     alert();
+  //   }
+  // }
   useEffect(() => {
     if (loading) return;
     if (user) history("/dashboard");

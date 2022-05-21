@@ -57,6 +57,15 @@ const signInWithGoogle = async () => {
         balance: 0,
         userCred: 1,
       });
+      const sRef = ref(datab, `users/${user.displayName}`);
+       set(sRef, {
+          username: user.displayName,
+          email: user.email,
+          authProvider: "local",
+          balance: 0,
+          userCred: 1,
+
+        });
     }
   } catch (err) {
     console.error(err);
@@ -79,6 +88,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
+    // console.log(`User from firebase:`, user);
    
     var reff=doc(db, `users/${email}`);
     await setDoc(
@@ -101,7 +111,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
         });
         onValue(sRef, (snapshot) => {
           const data = snapshot.val();
-          console.log(`dataElement`, data);
+          // console.log(`dataElement`, data);
         });
  
   } catch (err) {
@@ -144,7 +154,9 @@ const sendPasswordReset = async (email) => {
 };
 
 const logout = () => {
+  
   signOut(auth);
+  alert(`User Logged Out Successfully!`);
 };
 
 export {

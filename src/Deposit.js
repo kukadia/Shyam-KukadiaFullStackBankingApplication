@@ -75,6 +75,10 @@ function Deposit(){
       }
       else{
         userbalance[2] += Number(deposit);
+      //   alert(`<div class="alert alert-primary" role="alert">
+      //   Deposit of amount was successful for amount $ ${deposit}
+      // </div>`);
+       
           alert(`Deposit of amount was successful for amount $ ${deposit}`);
           updateBalance(userbalance[1],userbalance[0],userbalance[2]);
           setShow(false);
@@ -91,6 +95,12 @@ function Deposit(){
     }
     
     function handleChange(e){
+      
+      if(isNaN(e.target.value)){
+        alert(`Input Value can only be a number `);
+        e.target.value='';
+        return
+      }
       setBtnSet('true');
       check(btnset);
       setDeposit(e.target.value); 
@@ -109,7 +119,7 @@ function Deposit(){
                 
                 <p className="card-text">To make a deposit to account please enter the amout below:</p>
                 <div className="form-group">
-                <label htmlFor="exampleFormControlInput1">Deposit Amount:</label>
+                <label htmlFor="exampleFormControlInput1">Deposit Amount: &nbsp;$</label>
                 <input  type="amount" className="form-control" id="deposit" onChange={e => handleChange(e)}></input>
                 </div><br></br>
                 <a href="#deposit" className={check()} style={btnSty} onClick={handlesubmit} >Deposit</a>
